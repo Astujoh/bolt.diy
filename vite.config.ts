@@ -92,6 +92,7 @@ export default defineConfig((config) => {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     },
     build: {
+      sourcemap: false, // 
       target: 'esnext',
       rollupOptions: {
         output: {
