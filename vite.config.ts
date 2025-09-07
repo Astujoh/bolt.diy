@@ -111,21 +111,22 @@ export default defineConfig((config) => {
       },
     },
     resolve: {
-      alias: {
-        buffer: 'vite-plugin-node-polyfills/polyfills/buffer',
-      },
-    },
+  alias: {
+    buffer: 'vite-plugin-node-polyfills/polyfills/buffer',
+    path: 'vite-plugin-node-polyfills/polyfills/path', // Añade esta línea
+  },
+  },
     plugins: [
       nodePolyfills({
-        include: ['buffer', 'process', 'util', 'stream'],
-        globals: {
-          Buffer: true,
-          process: true,
-          global: true,
-        },
-        protocolImports: true,
-        exclude: ['child_process', 'fs', 'path'],
-      }),
+    include: ['buffer', 'process', 'util', 'stream', 'path'], // Añade 'path' aquí
+    globals: {
+    Buffer: true,
+    process: true,
+    global: true,
+                },
+      protocolImports: true,
+      exclude: ['child_process', 'fs'], // Quita 'path' de exclude
+        }),
       {
         name: 'buffer-polyfill',
         transform(code, id) {
